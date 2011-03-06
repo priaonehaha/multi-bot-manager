@@ -1,0 +1,38 @@
+C:\Users\SepaX\AppData\Local\Temporary Projects\BotManager\bin\Debug\BotManager.exe
+C:\Users\SepaX\AppData\Local\Temporary Projects\BotManager\bin\Debug\BotManager.pdb
+C:\Users\SepaX\AppData\Local\Temporary Projects\BotManager\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\SepaX\AppData\Local\Temporary Projects\BotManager\obj\Debug\BotManager.frmMain.resources
+C:\Users\SepaX\AppData\Local\Temporary Projects\BotManager\obj\Debug\BotManager.Properties.Resources.resources
+C:\Users\SepaX\AppData\Local\Temporary Projects\BotManager\obj\Debug\BotManager.csproj.GenerateResource.Cache
+C:\Users\SepaX\AppData\Local\Temporary Projects\BotManager\obj\Debug\BotManager.exe
+C:\Users\SepaX\AppData\Local\Temporary Projects\BotManager\obj\Debug\BotManager.pdb
+C:\Users\SepaX\AppData\Local\Temporary Projects\BotManager\obj\Debug\BotManager.Forms.createChar.resources
+C:\Users\SepaX\AppData\Local\Temporary Projects\BotManager\obj\Debug\BotManager.Forms.map.resources
+D:\Development\BotManager\obj\Debug\BotManager.exe
+D:\Development\BotManager\obj\Debug\BotManager.pdb
+D:\Development\BotManager\bin\Debug\BotManager.exe
+D:\Development\BotManager\bin\Debug\BotManager.pdb
+D:\Development\BotManager\obj\Debug\ResolveAssemblyReference.cache
+D:\Development\BotManager\obj\Debug\BotManager.Forms.createChar.resources
+D:\Development\BotManager\obj\Debug\BotManager.frmMain.resources
+D:\Development\BotManager\obj\Debug\BotManager.Properties.Resources.resources
+D:\Development\BotManager\obj\Debug\BotManager.csproj.GenerateResource.Cache
+D:\Development\BotManager\obj\Debug\BotManager.frmMap.resources
+D:\Development\BotManager\obj\Debug\Interop.AutoItX3Lib.dll
+D:\Development\BotManager\obj\Debug\BotManager.csproj.ResolveComReference.cache
+D:\Development\BotManager\bin\Debug\Interop.AutoItX3Lib.dll
+D:\Development\BotManager\obj\Debug\BotManager.frmAbout.resources
+D:\Development\Projects\BotManager\BotManager\obj\Debug\Interop.AutoItX3Lib.dll
+D:\Development\Projects\BotManager\BotManager\obj\Debug\BotManager.csproj.ResolveComReference.cache
+D:\Development\Projects\BotManager\BotManager\obj\Debug\BotManager.exe
+D:\Development\Projects\BotManager\BotManager\obj\Debug\BotManager.pdb
+D:\Development\Projects\BotManager\BotManager\bin\Debug\BotManager.exe
+D:\Development\Projects\BotManager\BotManager\bin\Debug\BotManager.pdb
+D:\Development\Projects\BotManager\BotManager\bin\Debug\Interop.AutoItX3Lib.dll
+D:\Development\Projects\BotManager\BotManager\obj\Debug\ResolveAssemblyReference.cache
+D:\Development\Projects\BotManager\BotManager\obj\Debug\BotManager.Forms.createChar.resources
+D:\Development\Projects\BotManager\BotManager\obj\Debug\BotManager.frmAbout.resources
+D:\Development\Projects\BotManager\BotManager\obj\Debug\BotManager.frmMain.resources
+D:\Development\Projects\BotManager\BotManager\obj\Debug\BotManager.frmMap.resources
+D:\Development\Projects\BotManager\BotManager\obj\Debug\BotManager.Properties.Resources.resources
+D:\Development\Projects\BotManager\BotManager\obj\Debug\BotManager.csproj.GenerateResource.Cache

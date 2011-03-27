@@ -37,7 +37,7 @@
             this.tsd_gotochar = new System.Windows.Forms.ToolStripDropDownButton();
             this.testchar1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testchar2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.tsb_follow_char = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.pb_map)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -47,10 +47,11 @@
             this.pb_map.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.pb_map.Location = new System.Drawing.Point(12, 28);
             this.pb_map.Name = "pb_map";
-            this.pb_map.Size = new System.Drawing.Size(512, 512);
+            this.pb_map.Size = new System.Drawing.Size(512, 421);
             this.pb_map.TabIndex = 0;
             this.pb_map.TabStop = false;
             this.pb_map.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pb_map_MouseMove);
+            this.pb_map.SizeChanged += new System.EventHandler(this.pb_map_SizeChanged);
             // 
             // toolStrip1
             // 
@@ -59,7 +60,7 @@
             this.toolStripButton2,
             this.toolStripSeparator1,
             this.tsd_gotochar,
-            this.toolStripButton3});
+            this.tsb_follow_char});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(534, 25);
@@ -113,21 +114,21 @@
             this.testchar2ToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.testchar2ToolStripMenuItem.Text = "Testchar 2";
             // 
-            // toolStripButton3
+            // tsb_follow_char
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(100, 22);
-            this.toolStripButton3.Text = "Follow Character";
-            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            this.tsb_follow_char.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsb_follow_char.Image = ((System.Drawing.Image)(resources.GetObject("tsb_follow_char.Image")));
+            this.tsb_follow_char.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsb_follow_char.Name = "tsb_follow_char";
+            this.tsb_follow_char.Size = new System.Drawing.Size(100, 22);
+            this.tsb_follow_char.Text = "Follow Character";
+            this.tsb_follow_char.Click += new System.EventHandler(this.tsb_follow_char_Click);
             // 
             // frmMap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 550);
+            this.ClientSize = new System.Drawing.Size(534, 461);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.pb_map);
             this.Name = "frmMap";
@@ -150,6 +151,6 @@
         private System.Windows.Forms.ToolStripMenuItem testchar1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testchar2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton tsb_follow_char;
     }
 }

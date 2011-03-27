@@ -7,7 +7,6 @@
 using System;
 using System.Diagnostics;
 using System.Text;
-using AutoItX3Lib;
 using System.Windows.Forms;
 
 namespace BotManager

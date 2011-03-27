@@ -12,6 +12,7 @@
     <AssemblyName>BotManager</AssemblyName>
     <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <StartupObject>BotManager.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,7 +43,8 @@
     <Compile Include="Bot-Classes\BotClass.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Core\Map.cs" />
+    <Compile Include="Core\Map.cs">
+    </Compile>
     <Compile Include="Helpers\EnumWindows.cs" />
     <Compile Include="Forms\createChar.cs">
       <SubType>Form</SubType>
@@ -91,6 +93,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -104,14 +107,7 @@
     <Compile Include="Core\RunningBots.cs" />
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="AutoItX3Lib">
-      <Guid>{F8937E53-D444-4E71-9275-35B64210CC3B}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-    </COMReference>
+    <None Include="Resources\PseudoImage.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

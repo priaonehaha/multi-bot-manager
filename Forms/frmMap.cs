@@ -16,9 +16,10 @@ namespace BotManager
         public frmMap()
         {
             InitializeComponent();
+            Map.ChangeSize(pb_map.Size);
         }
 
-        
+
 
         private void pb_map_MouseMove(object sender, MouseEventArgs e)
         {
@@ -29,17 +30,22 @@ namespace BotManager
 
                 oldX = e.X;
                 oldY = e.Y;
-
-                Map.MoveMap(diffX, diffY);
+                
+                //Map.MoveMap(diffX, diffY);
 
             }
         }
 
-        private void toolStripButton3_Click(object sender, EventArgs e)
+        private void tsb_follow_char_Click(object sender, EventArgs e)
         {
-            
+            pb_map.Image = Map.GenerateImage();
         }
 
-        
+        private void pb_map_SizeChanged(object sender, EventArgs e)
+        {
+            Map.ChangeSize(pb_map.Size);
+        }
+
+
     }
 }

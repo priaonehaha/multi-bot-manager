@@ -17,7 +17,10 @@ namespace BotManager
             iBot = 1,
             phBot = 2,
             SBot = 3,
-            iSroBot = 4
+            iSroBot = 4,
+            mBot = 5,
+            sroKing = 6
+            // Maybe DB-Bot ?
         }
 
         public struct BotInfo

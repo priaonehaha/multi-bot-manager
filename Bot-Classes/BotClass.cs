@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Text;
-using AutoItX3Lib;
 using System.Diagnostics;
 
 namespace BotManager

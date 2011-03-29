@@ -45,6 +45,7 @@
     </Compile>
     <Compile Include="Core\Map.cs">
     </Compile>
+    <Compile Include="Helpers\Coordinate.cs" />
     <Compile Include="Helpers\EnumWindows.cs" />
     <Compile Include="Forms\createChar.cs">
       <SubType>Form</SubType>

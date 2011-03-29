@@ -38,7 +38,11 @@ namespace BotManager
 
         private void tsb_follow_char_Click(object sender, EventArgs e)
         {
-            pb_map.Image = Map.GenerateImage();
+            //pb_map.Image = Map.GenerateImage();
+
+            Coordinate coord = new Coordinate(new Point(-50, 50));
+
+            MessageBox.Show(coord.PixelOnSector.ToString() + "\n" + coord.Sector.ToString());
         }
 
         private void pb_map_SizeChanged(object sender, EventArgs e)

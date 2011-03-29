@@ -41,7 +41,7 @@ namespace BotManager
                 }
                 else if (InGameCoord.X < 0)
                 {
-                    xSec = 134 - (InGameCoord.X / 192);
+                    xSec = (InGameCoord.X / 192) + 134;
                 }
 
                 if (InGameCoord.Y >= 0)
@@ -50,7 +50,7 @@ namespace BotManager
                 }
                 else if (InGameCoord.Y < 0)
                 {
-                    ySec = 91 - (InGameCoord.Y / 192);
+                    ySec = (InGameCoord.Y / 192) + 91;
                 }
 
                 return new Point(xSec, ySec);
@@ -58,63 +58,61 @@ namespace BotManager
         }
         #endregion
 
-        #region RealCoordinates
+        #region PixelOnSector
         // Idea:
         // Caluclate with InGame Coordinates first and Convert the remaining Value into Pixel
         // Might be more accurate
-        public Point RealCoordinates
+        
+        /// <summary>
+        /// Calculate the Pixels based on the Coordinates related to the file
+        /// </summary>
+        public Point PixelOnSector
         {
             get
             {
-                int sectordiff_x;
                 int pixeldiff_x;
 
-                if (Sector.X >= 135)
+                if (InGameCoord.X >= 0)
                 {
-                    // Sector >= 135 means our coordinate is right of (0|0)
-                    sectordiff_x = Sector.X - 135;
-                    pixeldiff_x = AsPixel().X - (sectordiff_x * 256);
+                    // X is bigger than 0 so its right of 0|0
+
+                    // Actual Coordinate - Difference
+                    pixeldiff_x = InGameCoord.X - ((Sector.X - 135) * 192);
                 }
                 else
                 {
-                    sectordiff_x = 135 - Sector.X;
-                    pixeldiff_x = (sectordiff_x * 256) + AsPixel().X;
+                    // Coordinate is negative
+                    pixeldiff_x = (InGameCoord.X + ((134 - Sector.X) * 192)) * -1;
                 }
 
 
-                int sectordiff_y;
                 int pixeldiff_y;
 
-                if (Sector.Y <= 91)
+                if (InGameCoord.Y <= 0)
                 {
-                    // Sector <= 91 means our coordinate is lower than (0|0)
-                    sectordiff_y = 91 - Sector.Y;
-                    pixeldiff_y = AsPixel().Y - (sectordiff_y * 256);
+                    pixeldiff_y = (InGameCoord.Y - ((91 - Sector.Y) * 192)) * -1;
                 }
                 else
                 {
-                    sectordiff_y = Sector.Y - 91;
-                    pixeldiff_y = (sectordiff_y * 256) + AsPixel().Y;
+                    pixeldiff_y = InGameCoord.Y + ((Sector.Y - 92) * 192);
                 }
 
-
-                return new Point(pixeldiff_x, pixeldiff_y);
+                return new Point(ToPixel(pixeldiff_x), ToPixel(pixeldiff_y));
             }
 
         }
         #endregion
 
-
+        #region ToPixel
         /// <summary>
         /// Convert InGame Coordinates into Pixels
         /// </summary>
         /// <returns>InGame Coordinate as Pixel</returns>
-        private Point AsPixel()
+        private int ToPixel(int coord)
         {
-            return new Point(
-                Convert.ToInt32((double)InGameCoord.X * 1.333333333),
-                Convert.ToInt32((double)InGameCoord.Y * 1.333333333)
-                );
+            return Convert.ToInt32((double)coord * 1.333333333);
         }
+        #endregion
+
     }
 }

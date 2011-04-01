@@ -7,7 +7,7 @@ namespace BotManager
     /// <summary>
     /// Coordinate Conversion Helper Class
     /// </summary>
-    class Coordinate
+    public class Coordinate
     {
         private Point InGameCoord;
 
@@ -21,6 +21,28 @@ namespace BotManager
         public Coordinate(Point Coord)
         {
             InGameCoord = Coord;
+        }
+
+        /// <summary>
+        /// Creates a new Coordinate Object
+        /// </summary>
+        /// <param name="x">X-Coordinate</param>
+        /// <param name="y">Y-Coordinate</param>
+        public Coordinate(int x, int y)
+        {
+            InGameCoord = new Point(x, y);
+        }
+        #endregion
+
+        #region InGame
+        public Point InGame
+        {
+            get{
+                return InGameCoord;
+            }
+            set {
+                InGameCoord = value;
+            }
         }
         #endregion
 
@@ -59,10 +81,7 @@ namespace BotManager
         #endregion
 
         #region PixelOnSector
-        // Idea:
-        // Caluclate with InGame Coordinates first and Convert the remaining Value into Pixel
-        // Might be more accurate
-        
+        // Idea: Save the calculated Pixels inside a variable. Might increase speed and reduce CPU Load while using map
         /// <summary>
         /// Calculate the Pixels based on the Coordinates related to the file
         /// </summary>
@@ -88,13 +107,13 @@ namespace BotManager
 
                 int pixeldiff_y;
 
-                if (InGameCoord.Y <= 0)
+                if (InGameCoord.Y >= 0)
                 {
-                    pixeldiff_y = (InGameCoord.Y - ((91 - Sector.Y) * 192)) * -1;
+                    pixeldiff_y = InGameCoord.Y + ((Sector.Y - 92) * 192);
                 }
                 else
                 {
-                    pixeldiff_y = InGameCoord.Y + ((Sector.Y - 92) * 192);
+                    pixeldiff_y = (InGameCoord.Y - ((91 - Sector.Y) * 192)) * -1;
                 }
 
                 return new Point(ToPixel(pixeldiff_x), ToPixel(pixeldiff_y));

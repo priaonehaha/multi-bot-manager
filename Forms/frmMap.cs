@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace BotManager
@@ -16,7 +12,10 @@ namespace BotManager
         public frmMap()
         {
             InitializeComponent();
+            
+            // Call this before trying to generate an Image
             Map.ChangeSize(pb_map.Size);
+            Map.CenterCoordinate = new Coordinate(50, 50);
         }
 
 
@@ -38,16 +37,17 @@ namespace BotManager
 
         private void tsb_follow_char_Click(object sender, EventArgs e)
         {
-            //pb_map.Image = Map.GenerateImage();
-
-            Coordinate coord = new Coordinate(new Point(-50, 50));
-
-            MessageBox.Show(coord.PixelOnSector.ToString() + "\n" + coord.Sector.ToString());
+            pb_map.Image = Map.GenerateImage();
         }
 
         private void pb_map_SizeChanged(object sender, EventArgs e)
         {
             Map.ChangeSize(pb_map.Size);
+        }
+
+        private void frmMap_ResizeEnd(object sender, EventArgs e)
+        {
+            pb_map.Size = new Size(Size.Width - 42, Size.Height - toolStrip1.Size.Height - 52);
         }
 
 

@@ -133,6 +133,7 @@
             this.Controls.Add(this.pb_map);
             this.Name = "frmMap";
             this.Text = "4Union - Map";
+            this.ResizeEnd += new System.EventHandler(this.frmMap_ResizeEnd);
             ((System.ComponentModel.ISupportInitialize)(this.pb_map)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

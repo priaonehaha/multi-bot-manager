@@ -23,101 +23,89 @@ namespace BotManager
             // GDI+ for the Basic Image Container
             Graphics graph = Graphics.FromImage(baseimage);
 
-            // Load the Center Image
-            Image center = ImageFromSection(CenterCoordinate.Sector);
-
             // Get the Center of the PictureBox
             Point pbcenter = new Point(imagesize.Width / 2, imagesize.Height / 2);
 
-            Point imagepos = new Point(pbcenter.X - CenterCoordinate.PixelOnSector.X, pbcenter.Y - CenterCoordinate.PixelOnSector.Y);
+            // Calculate the Number of Images
+            Point num = new Point(
+                
+                (int)Math.Truncate((double)(imagesize.Width / 256)),
+                (int)Math.Truncate((double)(imagesize.Height / 256))
+                
+                );
 
-            graph.DrawImage(center, imagepos);
 
+            // int remainingpixels = pbcenter.X - (Math.Truncate((double)(pbcenter.X / 256)) * 256)
+            Point startpos = new Point(
+                (pbcenter.X - (int)(Math.Truncate((double)(pbcenter.X / 256)) * 256)) - CenterCoordinate.PixelOnSector.X,
+                (pbcenter.Y - (int)(Math.Truncate((double)(pbcenter.Y / 256)) * 256)) - CenterCoordinate.PixelOnSector.Y
+                );
 
+            Point startsec = new Point(
+                CenterCoordinate.Sector.X - (int)(Math.Truncate((double)(pbcenter.X / 256))),
+                CenterCoordinate.Sector.Y - (int)(Math.Truncate((double)(pbcenter.Y / 256)))
+                );
+            for(int cx = 0; cx <= num.X;cx++)
+            {
+                for(int cy = 0; cy <= num.Y;cy++)
+                {
+                    Image newimg = ImageFromSection(startsec.X + cx, startsec.Y - cy);
+
+                    graph.DrawImage(
+                        newimg,
+                        new Point(
+                            startpos.X + (cx * 257),
+                            startpos.Y + (cy * 257)
+                            )
+                        );
+
+                    
+                    
+                    //MessageBox.Show("Image drawn\n" + cx.ToString() + " " + cy.ToString() + "\n");
+                    
+                }
+            }
+
+            // Image is drawn inverted
+            // Add a starting position and calculate from there
+
+            // Tempoary Draw the Center of the Image
+            graph.DrawEllipse(new Pen(Color.Blue), new Rectangle(pbcenter, new Size(5,5)));
+
+            return baseimage;
+
+        }
+
+        private static Point NumberOfImages()
+        {
             int numx = 0;
             int numy = 0;
+
             while (true)
             {
                 /*
                  * This Formula is a bit complicated. We will calculate the 
                  * Number of images that must be drawn to fill the image
-                 * 
-                    int distanceleft = pbcenter.X - CenterCoordinate.PixelOnSector.X;
-                    int distancecalculated = numx * 256;
+                 * Example:
+                    int distancetocenter = imagesize.X / 2;
+                    int distanceleft = distancetocenter - CenterCoordinate.PixelOnSector.X;
+                    int distancecalculated = num.X * 256;
                     int distanceremaining = distanceleft - distancecalculated;
-                 * 
-                 * 
                  */
 
-                if (!((pbcenter.X - CenterCoordinate.PixelOnSector.X) - (numx * 256) <= 0))
+                if (!(((imagesize.Height / 2) - CenterCoordinate.PixelOnSector.X) - (numx * 256) <= 0))
                 { // If not reached the Border
                     numx++;
                 }
-                else if (!((pbcenter.Y - CenterCoordinate.PixelOnSector.Y) - (numy * 256) <= 0))
+                else if (!(((imagesize.Width / 2) - CenterCoordinate.PixelOnSector.Y) - (numy * 256) <= 0))
                 {
                     numy++;
                 }
                 else
                 { break; }
             }
-            MessageBox.Show(numx.ToString() + " " + numy.ToString());
 
-            int cx = 0;
-            int cy = 0;
-
-            while (true)
-            {
-                
-                while (true)
-                {
-                    Image newimg = ImageFromSection(
-                        CenterCoordinate.Sector.X - cx,
-                        CenterCoordinate.Sector.Y - cy);
-
-                    graph.DrawImage(newimg, new Point(
-                        pbcenter.X - CenterCoordinate.PixelOnSector.X - (cx * 256),
-                        pbcenter.Y - CenterCoordinate.PixelOnSector.Y - (cy * 256)
-                        ));
-                }
-            }
-            
-            // Image drawn inverted. Fix it !
-
-
-            // If Enough space on left
-                // Draw image on left
-                
-                // Increase numleft ?
-            
-
-            
-
-            // If Enough space on top
-
-            // Draw image on left top
-
-            // Draw image on top
-
-            // In Enough space on right
-
-            // Draw image on right top
-            // Draw image on right
-
-            // If Enough space on bottom
-
-            // Draw image on right bottom
-            // Draw image on bottom
-
-            // As checked before -> Draw image on left bottom
-
-            
-
-
-            // Tempoary Draw the Center of the Image
-            graph.DrawEllipse(new Pen(Color.Blue), new Rectangle(pbcenter, new Size(2, 2)));
-
-            return baseimage;
-
+            return new Point(numx, numy);
         }
 
         #region ChangeWindowSize
@@ -126,7 +114,6 @@ namespace BotManager
             imagesize = nSize;
         }
         #endregion
-
 
         #region ImageFromSection
         private static Image ImageFromSection(int xSec, int ySec)

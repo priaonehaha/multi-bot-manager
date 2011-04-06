@@ -9,9 +9,20 @@ namespace BotManager
     /// </summary>
     public class Coordinate
     {
+        // Internal Variables
         private Point InGameCoord;
+        private Point PixelOnSec;
 
         // IMPORTANT: InGame (0|0) = Pixel (0|0) at Sector (135|91)
+
+        #region ToDo-List
+        /*
+         * Move out GetSector because we don't need to recalculate it every time
+         * 
+         * 
+         */
+        #endregion
+
 
         #region Constructor
         /// <summary>
@@ -21,6 +32,8 @@ namespace BotManager
         public Coordinate(Point Coord)
         {
             InGameCoord = Coord;
+
+            PixelOnSec = calc_PixelOnSector();
         }
 
         /// <summary>
@@ -31,6 +44,8 @@ namespace BotManager
         public Coordinate(int x, int y)
         {
             InGameCoord = new Point(x, y);
+
+            PixelOnSec = calc_PixelOnSector();
         }
         #endregion
 
@@ -89,36 +104,48 @@ namespace BotManager
         {
             get
             {
-                int pixeldiff_x;
-
-                if (InGameCoord.X >= 0)
-                {
-                    // X is bigger than 0 so its right of 0|0
-
-                    // Actual Coordinate - Difference
-                    pixeldiff_x = InGameCoord.X - ((Sector.X - 135) * 192);
-                }
-                else
-                {
-                    // Coordinate is negative
-                    pixeldiff_x = (InGameCoord.X + ((134 - Sector.X) * 192)) * -1;
-                }
-
-
-                int pixeldiff_y;
-
-                if (InGameCoord.Y >= 0)
-                {
-                    pixeldiff_y = InGameCoord.Y + ((Sector.Y - 92) * 192);
-                }
-                else
-                {
-                    pixeldiff_y = (InGameCoord.Y - ((91 - Sector.Y) * 192)) * -1;
-                }
-
-                return new Point(ToPixel(pixeldiff_x), ToPixel(pixeldiff_y));
+                return PixelOnSec;
             }
 
+        }
+        #endregion
+
+        #region Calculate PixelOnSector
+        /// <summary>
+        /// This Method calculates the PixelOnSector.
+        /// </summary>
+        /// <returns></returns>
+        /// I moved it out because we don't need to recalculate this everytime. Will save a little time
+        private Point calc_PixelOnSector()
+        {
+            int pixeldiff_x;
+
+            if (InGameCoord.X >= 0)
+            {
+                // X is bigger than 0 so its right of 0|0
+
+                // Actual Coordinate - Difference
+                pixeldiff_x = InGameCoord.X - ((Sector.X - 135) * 192);
+            }
+            else
+            {
+                // Coordinate is negative
+                pixeldiff_x = (InGameCoord.X + ((134 - Sector.X) * 192)) * -1;
+            }
+
+
+            int pixeldiff_y;
+
+            if (InGameCoord.Y >= 0)
+            {
+                pixeldiff_y = 192 - (InGameCoord.Y + ((Sector.Y - 92) * 192));
+            }
+            else
+            {
+                pixeldiff_y = (InGameCoord.Y - ((91 - Sector.Y) * 192)) * -1;
+            }
+
+            return new Point(ToPixel(pixeldiff_x), ToPixel(pixeldiff_y));
         }
         #endregion
 

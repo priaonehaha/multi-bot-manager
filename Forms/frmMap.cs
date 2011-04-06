@@ -15,7 +15,7 @@ namespace BotManager
             
             // Call this before trying to generate an Image
             Map.ChangeSize(pb_map.Size);
-            Map.CenterCoordinate = new Coordinate(50, 50);
+            Map.CenterCoordinate = new Coordinate(128, -128);
         }
 
 
@@ -37,6 +37,7 @@ namespace BotManager
 
         private void tsb_follow_char_Click(object sender, EventArgs e)
         {
+
             pb_map.Image = Map.GenerateImage();
         }
 

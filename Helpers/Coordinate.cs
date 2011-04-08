@@ -57,6 +57,7 @@ namespace BotManager
             }
             set {
                 InGameCoord = value;
+                PixelOnSec = calc_PixelOnSector();
             }
         }
         #endregion
@@ -118,6 +119,9 @@ namespace BotManager
         /// I moved it out because we don't need to recalculate this everytime. Will save a little time
         private Point calc_PixelOnSector()
         {
+            // int diff = (Sector - 135) * 192
+            // int pixeldiff = Cactual Coordinate - Diff
+
             int pixeldiff_x;
 
             if (InGameCoord.X >= 0)
@@ -138,7 +142,7 @@ namespace BotManager
 
             if (InGameCoord.Y >= 0)
             {
-                pixeldiff_y = 192 - (InGameCoord.Y + ((Sector.Y - 92) * 192));
+                pixeldiff_y = 192 - (InGameCoord.Y - ((Sector.Y - 92) * 192));
             }
             else
             {

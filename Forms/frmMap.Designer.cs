@@ -50,8 +50,6 @@
             this.pb_map.Size = new System.Drawing.Size(512, 421);
             this.pb_map.TabIndex = 0;
             this.pb_map.TabStop = false;
-            this.pb_map.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pb_map_MouseMove);
-            this.pb_map.SizeChanged += new System.EventHandler(this.pb_map_SizeChanged);
             // 
             // toolStrip1
             // 

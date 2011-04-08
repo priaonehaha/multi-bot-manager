@@ -15,42 +15,41 @@ namespace BotManager
             
             // Call this before trying to generate an Image
             Map.ChangeSize(pb_map.Size);
-            Map.CenterCoordinate = new Coordinate(128, -128);
+            Map.CenterCoordinate = new Coordinate(1,385);
         }
 
 
-
+        #region MouseMove (Disabled)
+        /*
         private void pb_map_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+           if (e.Button == MouseButtons.Left)
             {
                 int diffX = e.X - oldX;
                 int diffY = e.Y - oldY;
 
+                if (diffX < 10 || diffY < 10)
+                    return;
+
                 oldX = e.X;
                 oldY = e.Y;
-                
-                //Map.MoveMap(diffX, diffY);
 
+                Map.MoveMap(diffX, diffY);
+
+                pb_map.Image = Map.GenerateImage();
             }
-        }
+        }*/
+        #endregion
 
         private void tsb_follow_char_Click(object sender, EventArgs e)
         {
-
             pb_map.Image = Map.GenerateImage();
-        }
-
-        private void pb_map_SizeChanged(object sender, EventArgs e)
-        {
-            Map.ChangeSize(pb_map.Size);
         }
 
         private void frmMap_ResizeEnd(object sender, EventArgs e)
         {
             pb_map.Size = new Size(Size.Width - 42, Size.Height - toolStrip1.Size.Height - 52);
         }
-
 
     }
 }

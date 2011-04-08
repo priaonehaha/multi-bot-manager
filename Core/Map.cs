@@ -28,23 +28,23 @@ namespace BotManager
 
             // Calculate the Number of Images
             Point num = new Point(
-                
-                (int)Math.Truncate((double)(imagesize.Width / 256)),
-                (int)Math.Truncate((double)(imagesize.Height / 256))
-                
+                (int)Math.Truncate((double)(imagesize.Width / 256) + 0.5),
+                (int)Math.Truncate((double)(imagesize.Height / 256) + 0.5)
                 );
 
 
-            // int remainingpixels = pbcenter.X - (Math.Truncate((double)(pbcenter.X / 256)) * 256)
+            // Calculate the starting Position
             Point startpos = new Point(
                 (pbcenter.X - (int)(Math.Truncate((double)(pbcenter.X / 256)) * 256)) - CenterCoordinate.PixelOnSector.X,
                 (pbcenter.Y - (int)(Math.Truncate((double)(pbcenter.Y / 256)) * 256)) - CenterCoordinate.PixelOnSector.Y
                 );
 
+            // Calculate the starting Sector
             Point startsec = new Point(
                 CenterCoordinate.Sector.X - (int)(Math.Truncate((double)(pbcenter.X / 256))),
-                CenterCoordinate.Sector.Y - (int)(Math.Truncate((double)(pbcenter.Y / 256)))
+                CenterCoordinate.Sector.Y + (int)(Math.Truncate((double)(pbcenter.Y / 256)))
                 );
+            
             for(int cx = 0; cx <= num.X;cx++)
             {
                 for(int cy = 0; cy <= num.Y;cy++)
@@ -54,58 +54,25 @@ namespace BotManager
                     graph.DrawImage(
                         newimg,
                         new Point(
-                            startpos.X + (cx * 257),
-                            startpos.Y + (cy * 257)
+                            startpos.X + (cx * 256),
+                            startpos.Y + (cy * 256)
                             )
                         );
-
-                    
-                    
-                    //MessageBox.Show("Image drawn\n" + cx.ToString() + " " + cy.ToString() + "\n");
-                    
                 }
             }
 
-            // Image is drawn inverted
-            // Add a starting position and calculate from there
-
-            // Tempoary Draw the Center of the Image
+            // Temporary Draw the Center of the Image
             graph.DrawEllipse(new Pen(Color.Blue), new Rectangle(pbcenter, new Size(5,5)));
 
             return baseimage;
-
         }
 
-        private static Point NumberOfImages()
+        public static void MoveMap(int diffx, int diffy)
         {
-            int numx = 0;
-            int numy = 0;
-
-            while (true)
-            {
-                /*
-                 * This Formula is a bit complicated. We will calculate the 
-                 * Number of images that must be drawn to fill the image
-                 * Example:
-                    int distancetocenter = imagesize.X / 2;
-                    int distanceleft = distancetocenter - CenterCoordinate.PixelOnSector.X;
-                    int distancecalculated = num.X * 256;
-                    int distanceremaining = distanceleft - distancecalculated;
-                 */
-
-                if (!(((imagesize.Height / 2) - CenterCoordinate.PixelOnSector.X) - (numx * 256) <= 0))
-                { // If not reached the Border
-                    numx++;
-                }
-                else if (!(((imagesize.Width / 2) - CenterCoordinate.PixelOnSector.Y) - (numy * 256) <= 0))
-                {
-                    numy++;
-                }
-                else
-                { break; }
-            }
-
-            return new Point(numx, numy);
+            CenterCoordinate.InGame = new Point(
+                CenterCoordinate.InGame.X + (int)(diffx / 1.33333333333333),
+                CenterCoordinate.InGame.Y + (int)(diffy / 1.33333333333333)
+            );
         }
 
         #region ChangeWindowSize

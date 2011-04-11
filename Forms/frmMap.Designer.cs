@@ -31,13 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMap));
             this.pb_map = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.tsl_zoomin = new System.Windows.Forms.ToolStripButton();
+            this.tsl_zoomout = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsd_gotochar = new System.Windows.Forms.ToolStripDropDownButton();
             this.testchar1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testchar2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsb_follow_char = new System.Windows.Forms.ToolStripButton();
+            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripTextBox2 = new System.Windows.Forms.ToolStripTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pb_map)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -54,34 +56,38 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton2,
+            this.tsl_zoomin,
+            this.tsl_zoomout,
             this.toolStripSeparator1,
             this.tsd_gotochar,
-            this.tsb_follow_char});
+            this.tsb_follow_char,
+            this.toolStripTextBox1,
+            this.toolStripTextBox2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(534, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton1
+            // tsl_zoomin
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.tsl_zoomin.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsl_zoomin.Image = ((System.Drawing.Image)(resources.GetObject("tsl_zoomin.Image")));
+            this.tsl_zoomin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsl_zoomin.Name = "tsl_zoomin";
+            this.tsl_zoomin.Size = new System.Drawing.Size(23, 22);
+            this.tsl_zoomin.Text = "toolStripButton1";
+            this.tsl_zoomin.Click += new System.EventHandler(this.tsl_zoomin_Click);
             // 
-            // toolStripButton2
+            // tsl_zoomout
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "toolStripButton2";
+            this.tsl_zoomout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsl_zoomout.Image = ((System.Drawing.Image)(resources.GetObject("tsl_zoomout.Image")));
+            this.tsl_zoomout.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsl_zoomout.Name = "tsl_zoomout";
+            this.tsl_zoomout.Size = new System.Drawing.Size(23, 22);
+            this.tsl_zoomout.Text = "toolStripButton2";
+            this.tsl_zoomout.Click += new System.EventHandler(this.tsl_zoomout_Click);
             // 
             // toolStripSeparator1
             // 
@@ -122,6 +128,18 @@
             this.tsb_follow_char.Text = "Follow Character";
             this.tsb_follow_char.Click += new System.EventHandler(this.tsb_follow_char_Click);
             // 
+            // toolStripTextBox1
+            // 
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.Size = new System.Drawing.Size(60, 25);
+            this.toolStripTextBox1.Text = "X_Coord";
+            // 
+            // toolStripTextBox2
+            // 
+            this.toolStripTextBox2.Name = "toolStripTextBox2";
+            this.toolStripTextBox2.Size = new System.Drawing.Size(60, 25);
+            this.toolStripTextBox2.Text = "Y_Coord";
+            // 
             // frmMap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -144,12 +162,14 @@
 
         private System.Windows.Forms.PictureBox pb_map;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton tsl_zoomin;
+        private System.Windows.Forms.ToolStripButton tsl_zoomout;
         private System.Windows.Forms.ToolStripDropDownButton tsd_gotochar;
         private System.Windows.Forms.ToolStripMenuItem testchar1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testchar2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton tsb_follow_char;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox2;
     }
 }

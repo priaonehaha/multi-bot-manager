@@ -12,17 +12,16 @@ namespace BotManager
         // Internal Variables
         private Point InGameCoord;
         private Point PixelOnSec;
+        private Point pSector;
 
         // IMPORTANT: InGame (0|0) = Pixel (0|0) at Sector (135|91)
 
         #region ToDo-List
         /*
-         * Move out GetSector because we don't need to recalculate it every time
-         * 
+         * Add function for Scaling
          * 
          */
         #endregion
-
 
         #region Constructor
         /// <summary>
@@ -33,6 +32,7 @@ namespace BotManager
         {
             InGameCoord = Coord;
 
+            pSector = calc_Sector();
             PixelOnSec = calc_PixelOnSector();
         }
 
@@ -45,6 +45,7 @@ namespace BotManager
         {
             InGameCoord = new Point(x, y);
 
+            pSector = calc_Sector();
             PixelOnSec = calc_PixelOnSector();
         }
         #endregion
@@ -57,7 +58,9 @@ namespace BotManager
             }
             set {
                 InGameCoord = value;
+                pSector = calc_Sector();
                 PixelOnSec = calc_PixelOnSector();
+                
             }
         }
         #endregion
@@ -70,28 +73,7 @@ namespace BotManager
         {
             get
             {
-                int xSec = 0;
-                int ySec = 0;
-
-                if (InGameCoord.X >= 0)
-                {
-                    xSec = (InGameCoord.X / 192) + 135;
-                }
-                else if (InGameCoord.X < 0)
-                {
-                    xSec = (InGameCoord.X / 192) + 134;
-                }
-
-                if (InGameCoord.Y >= 0)
-                {
-                    ySec = (InGameCoord.Y / 192) + 92;
-                }
-                else if (InGameCoord.Y < 0)
-                {
-                    ySec = (InGameCoord.Y / 192) + 91;
-                }
-
-                return new Point(xSec, ySec);
+                return pSector;
             }
         }
         #endregion
@@ -151,6 +133,41 @@ namespace BotManager
 
             return new Point(ToPixel(pixeldiff_x), ToPixel(pixeldiff_y));
         }
+        #endregion
+
+        #region Calculate Sector
+        /// <summary>
+        /// This Method calculates the Sector
+        /// </summary>
+        /// <returns></returns>
+        /// I moved it out because we don't need to recalculate this everytime. Will save a little time
+        private Point calc_Sector()
+        {
+            int xSec = 0;
+            int ySec = 0;
+
+            if (InGameCoord.X >= 0)
+            {
+                xSec = (InGameCoord.X / 192) + 135;
+            }
+            else if (InGameCoord.X < 0)
+            {
+                xSec = (InGameCoord.X / 192) + 134;
+            }
+
+            if (InGameCoord.Y >= 0)
+            {
+                ySec = (InGameCoord.Y / 192) + 92;
+            }
+            else if (InGameCoord.Y < 0)
+            {
+                ySec = (InGameCoord.Y / 192) + 91;
+            }
+
+            return new Point(xSec, ySec);
+
+        }
+
         #endregion
 
         #region ToPixel

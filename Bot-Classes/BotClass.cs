@@ -5,14 +5,14 @@ using System.Diagnostics;
 namespace BotManager
 {
     /// <summary>
-    /// Pseudo-Klasse um alle Bots in einem Array zu verwalten
+    /// Pseudo-Class to manage all Bots in one Array
     /// </summary>
     abstract class BotClass
     {
 
         #region Propertys
         /// <summary>
-        /// Gibt den Fenstertitel zurück oder legt diesen fest
+        /// Returns the WindowTitle or changes it
         /// </summary>
         public abstract string WindowTitle
         {
@@ -21,7 +21,7 @@ namespace BotManager
         }
 
         /// <summary>
-        /// Gibt den Namen des Characters zurück (readonly)
+        /// Returns the Name of the Character (readonly)
         /// </summary>
         public abstract string Charname
         {
@@ -29,7 +29,7 @@ namespace BotManager
         }
 
         /// <summary>
-        /// Gibt den Servernamen zurück (readonly)
+        /// Returns the Name of the Server the Bot is connected to (readonly)
         /// </summary>
         public abstract string Server
         {
@@ -37,7 +37,7 @@ namespace BotManager
         }
 
         /// <summary>
-        /// Gibt das Level des Characters zurück (readonly)
+        /// Returns the Level of the selected Character (readonly)
         /// </summary>
         public abstract byte Level
         {
